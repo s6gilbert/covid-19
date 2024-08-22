@@ -4,9 +4,11 @@ pipeline {
     stages {
         stage('install apache') {
             steps {
-                sh 'apt install apache2'
+                sh 'sudo apt install apache2'
             }
         }
+            
+        
         stage('update the server') {
             steps {
                 sh 'apt update'
@@ -22,7 +24,10 @@ pipeline {
                 sh 'docker run -itd -p 80:80 gilbert/covid19:jenkins-$BUILD_NUMBER'
             }
         }
+    }
+}
         
+
             
             
         
