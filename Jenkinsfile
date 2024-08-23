@@ -1,10 +1,13 @@
 pipeline {
     agent any
-
     stages {
-        stage('install apache') {
+        stage('Install Apache2') {
             steps {
-                sh 'apt install apache2'
+                // Update the package list and install Apache2 using sudo
+                sh '''
+                sudo apt-get update
+                sudo apt-get install apache2 -y
+                '''
             }
         }
             
