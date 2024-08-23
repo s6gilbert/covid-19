@@ -1,17 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Install Apache2') {
+        stage('Update and Install Apache2') {
             steps {
-                // Update the package list and install Apache2 using sudo
                 sh '''
+                sudo rm -f /var/lib/apt/lists/lock
+                sudo rm -f /var/cache/apt/pkgcache.bin
+                sudo rm -f /var/cache/apt/srcpkgcache.bin
                 sudo apt-get update
                 sudo apt-get install apache2 -y
                 '''
             }
         }
-            
-        
         stage('update the server') {
             steps {
                 sh 'apt update'
